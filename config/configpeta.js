@@ -3,21 +3,20 @@ import View from 'https://cdn.skypack.dev/ol/View.js';
 import TileLayer from 'https://cdn.skypack.dev/ol/layer/Tile.js';
 import XYZ from 'https://cdn.skypack.dev/ol/source/XYZ.js';
 import OSM from 'https://cdn.skypack.dev/ol/source/OSM.js';
-import {fromLonLat} from 'https://cdn.skypack.dev/ol/proj.js';
+import { fromLonLat } from 'https://cdn.skypack.dev/ol/proj.js';
 import Overlay from 'https://cdn.skypack.dev/ol/Overlay.js';
-import {container} from 'https://jscroot.github.io/element/croot.js';
+import { container } from 'https://jscroot.github.io/element/croot.js';
 
-const attributions = '<a href="https://befous.github.io/" target="_blank">&copy; May Indonesia</a> ';
+const attributions = '<a href="https://befous.github.io/" target="_blank">&copy; Peta Kota Lubuklinggau </a> ';
 
-const place = [102.89140582330168,
-  -3.2799175763650084];
+const place = [102.89140582330168, -3.2799175763650084];
 
-export let idmarker = {id:1};
+export let idmarker = { id: 1 };
 
 const basemap = new TileLayer({
-    source: new OSM({
-        attributions: attributions,
-      }),
+  source: new OSM({
+    attributions: attributions,
+  }),
 });
 
 const defaultstartmap = new View({
@@ -26,28 +25,26 @@ const defaultstartmap = new View({
 });
 
 export const overlay = new Overlay({
-    element: container('popup'),
-    autoPan: {
-      animation: {
-        duration: 250,
-      },
+  element: container('popup'),
+  autoPan: {
+    animation: {
+      duration: 250,
     },
-  });
+  },
+});
 
 export const popupinfo = new Overlay({
-    element: container('popupinfo'),
-    autoPan: {
-      animation: {
-        duration: 250,
-      },
+  element: container('popupinfo'),
+  autoPan: {
+    animation: {
+      duration: 250,
     },
+  },
 });
 
 export let map = new Map({
-  layers: [
-        basemap
-    ],
-  overlays: [overlay,popupinfo],
+  layers: [basemap],
+  overlays: [overlay, popupinfo],
   target: 'map',
   view: defaultstartmap,
 });
